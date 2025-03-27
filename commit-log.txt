@@ -1,2 +1,3 @@
 Initialize monorepo with backend and frontend structure
 Add FastAPI server with / route and main.py
+Create UserSelection model and base schema
