@@ -3,3 +3,4 @@ Add FastAPI server with / route and main.py
 Create UserSelection model and base schema
 Add prompt route and route structure
 Add initial prompt_template in data.py
+Add matcher functions for avatar/capability/expert lookup
