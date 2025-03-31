@@ -4,3 +4,4 @@ Create UserSelection model and base schema
 Add prompt route and route structure
 Add initial prompt_template in data.py
 Add matcher functions for avatar/capability/expert lookup
+Add OpenRouter integration and API call logic
