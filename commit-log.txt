@@ -5,3 +5,4 @@ Add prompt route and route structure
 Add initial prompt_template in data.py
 Add matcher functions for avatar/capability/expert lookup
 Add OpenRouter integration and API call logic
+Wire up prompt response and return AI output
