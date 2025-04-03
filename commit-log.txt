@@ -7,3 +7,4 @@ Add matcher functions for avatar/capability/expert lookup
 Add OpenRouter integration and API call logic
 Wire up prompt response and return AI output
 Add CORS middleware to support frontend
+Create /api/options endpoint to deliver selection lists
