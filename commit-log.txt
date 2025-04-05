@@ -9,3 +9,4 @@ Wire up prompt response and return AI output
 Add CORS middleware to support frontend
 Create /api/options endpoint to deliver selection lists
 Scaffold frontend with Expo + React Native
+Build user-setup.tsx for choosing options
