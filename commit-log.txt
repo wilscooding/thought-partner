@@ -12,3 +12,4 @@ Scaffold frontend with Expo + React Native
 Build user-setup.tsx for choosing options
 Create chat.tsx for AI convo flow
 Integrate AI response + text-to-speech output
+Add isFirstMessage logic to backend prompt flow
