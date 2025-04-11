@@ -15,3 +15,4 @@ Integrate AI response + text-to-speech output
 Add isFirstMessage logic to backend prompt flow
 Connect frontend to send isFirstMessage on first turn
 Add SpeechRecognition for voice-to-text on web
+Add mic button to trigger voice input on chat screen
