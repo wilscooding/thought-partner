@@ -6,6 +6,7 @@ import {
 	ActivityIndicator,
 	ScrollView,
 	StyleSheet,
+	Platform,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { router } from "expo-router";
@@ -24,7 +25,15 @@ type UserSelections = {
 	personality_type: string;
 };
 
-const API_URL = "http://127.0.0.1:8000/api"; // Update for production use
+const getAPIUrl = () => {
+	if (Platform.OS === "android") {
+		return "http://10.0.2.2:8000/api";
+	}
+	return "http://127.0.0.1:8000/api";
+};
+
+const API_URL = getAPIUrl();
+
 
 const keyMap: { [key: string]: keyof UserSelections } = {
 	industries: "industry",

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes.prompt import router as prompt_router
+from app.routes.prompt import router as prompt_router
 from fastapi.middleware.cors import CORSMiddleware
 
 

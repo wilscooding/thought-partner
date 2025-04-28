@@ -1,13 +1,13 @@
 from fastapi import APIRouter, HTTPException
-from models.user_input import UserSelection
-from services.matcher import (
+from app.models.user_input import UserSelection
+from app.services.matcher import (
     get_avatar_description,
     get_capability_prompt,
     get_expert_description,
     get_prompt_template
 )
-from services.data import avatar_descriptions, capability_descriptions, industry_experts
-from services.openrouter import call_openrouter_api
+from app.services.data import avatar_descriptions, capability_descriptions, industry_experts
+from app.services.openrouter import call_openrouter_api
 
 router = APIRouter()
 
