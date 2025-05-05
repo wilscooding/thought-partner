@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Custom theme variables (optional usage) */
+@theme {
+  --color-primary: #4f46e5;
+  --font-display: 'Inter', sans-serif;
+}
+
+/* --------------------------
+   Login Page (login-) styles
+--------------------------- */
+
+/* Input fields */
+.login-input {
+    @apply w-full rounded-full px-4 py-2 bg-[#e9e4d3] text-black text-sm placeholder:text-gray-500;
+  }
+  
+  /* Input label */
+  .login-label {
+    @apply block text-sm mb-1;
+  }
+  
+  /* Password toggle icon button */
+  .login-icon-button {
+    @apply absolute right-3 top-2 cursor-pointer;
+  }
+  
+  /* Login button */
+  .login-btn {
+    @apply bg-[#c6b06e] w-[180px] text-[#141420] font-bold text-lg py-2 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all underline underline-offset-4;
+  }
+  
+  /* Divider line */
+  .login-divider-line {
+    @apply flex-grow border-[#c6b06e];
+  }
+  
+  /* OAuth buttons */
+  .login-oauth {
+    @apply bg-white text-black flex items-center justify-center gap-2 w-full max-w-sm rounded-full py-2 shadow;
+  }
+  
+  /* Footer link */
+  .login-footer {
+    @apply text-sm underline mt-4;
+  }
+/* --------------------------
+   End of login styles  
+
+/* Create-account intro*/
+body {
+  @apply bg-[#141420] text-[#e9e4d3] font-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headline */
+.ca-title {
+  @apply text-xl font-bold leading-snug tracking-wide;
+}
+
+/* Paragraph block */
+.ca-description {
+  @apply text-lg leading-loose tracking-normal;
+  max-width: 300px;
+}
+
+/* Tagline */
+.ca-tagline {
+  @apply text-sm italic text-[#d4cebb] mt-2;
+}
+
+/* Button */
+.ca-btn-primary {
+  @apply underline underline-offset-4 bg-[#c6b06e] text-[#141420] font-bold text-lg py-2 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all;
+  width: 200px;
+}
+
+/* End of create account intro styles */

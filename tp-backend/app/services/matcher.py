@@ -1,10 +1,11 @@
 from .data import avatar_descriptions, capability_descriptions, industry_experts, prompt_template
 
-def get_avatar_description(gender, personality_type):
+def get_avatar_profile(gender, personality_type):
   for avatar in avatar_descriptions:
     if avatar["gender"] == gender and avatar["personality_type"] == personality_type:
-      return avatar["description"]
+      return avatar
   return None
+
 
 def get_capability_prompt(capability_area):
     return capability_descriptions.get(capability_area)
