@@ -392,6 +392,65 @@ body {
     @apply mt-10 text-[#c6b06e] text-lg font-bold flex;
   }
   
+
+/* --------------------------
+   Tour Styles (tour-)
+--------------------------- */
+
+.tour-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6 items-center text-center;
+  }
+  
+  .tour-title {
+    @apply text-xl font-bold tracking-wide leading-snug;
+  }
+  
+  .tour-description {
+    @apply text-base leading-relaxed max-w-xs text-[#e9e4d3];
+  }
+  
+  .tour-nav {
+    @apply flex justify-between w-full max-w-sm mt-10;
+  }
+  
+  .tour-nav-btn {
+    @apply font-bold text-[#e9e4d3] text-base;
+  }
+  
+
+  /* --------------------------
+   Tour Slide Styles
+--------------------------- */
+
+.tour-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6 text-center;
+  }
+  
+  .tour-heading {
+    @apply text-lg font-bold leading-snug text-[#e9e4d3];
+  }
+  
+  .tour-icon {
+    @apply w-16 h-16 mx-auto my-4;
+  }
+  
+  .tour-description {
+    @apply text-sm leading-relaxed max-w-sm mx-auto text-[#e9e4d3];
+  }
+  
+  .tour-nav {
+    @apply w-full max-w-sm mx-auto flex justify-between pt-8;
+  }
+  
+  .tour-nav-btn {
+    @apply text-[#e9e4d3] text-sm font-bold tracking-wide;
+  }
+  
+  /* Tour CTA Button */
+.tour-cta-btn {
+    @apply bg-[#c6b06e] text-[#141420] font-bold text-lg py-2 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all;
+    width: 250px;
+  }
   
   
   
