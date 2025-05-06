@@ -1,19 +1,21 @@
 <script>
     let showPassword = false;
+    import { goto } from '$app/navigation';
+    const handleStart = () => goto('/create-account/intro');
   </script>
   
-  <div class="min-h-screen bg-[#141420] text-[#e9e4d3] flex flex-col items-center justify-center px-6 py-8 space-y-6 font-serif">
+  <div class="login-container items-center">
     <!-- Logo -->
-    <img src="" alt="Logo" class="w-12 h-12 mb-4" />
+    <img src="/logo.png" alt="Logo" class="w-12 h-12 mb-4" />
   
     <!-- Username -->
-    <div class="w-full max-w-sm">
+    <div class="w-full">
       <label class="login-label">Username:</label>
       <input type="email" placeholder="Enter your email" class="login-input" />
     </div>
   
     <!-- Password -->
-    <div class="w-full max-w-sm">
+    <div class="w-full">
       <label class="login-label">Password:</label>
       <div class="relative">
         <input
@@ -30,7 +32,7 @@
     <button class="login-btn">Log In</button>
   
     <!-- Divider -->
-    <div class="flex items-center w-full max-w-sm text-sm text-[#c6b06e] space-x-4">
+    <div class="flex items-center w-full text-sm text-[#c6b06e] space-x-4">
       <hr class="login-divider-line" />
       <span class="shrink-0">Or continue with</span>
       <hr class="login-divider-line" />
@@ -52,7 +54,7 @@
   
     <!-- Sign Up -->
     <div class="login-footer">
-      Don’t have an account? <a href="/create-account" class="font-bold">Create One</a>
+      Don't have an account? <a href="/create-account" class="font-bold">Create One</a>
     </div>
   </div>
   

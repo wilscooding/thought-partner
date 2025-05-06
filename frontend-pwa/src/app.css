@@ -27,7 +27,7 @@
   
   /* Login button */
   .login-btn {
-    @apply bg-[#c6b06e] w-[180px] text-[#141420] font-bold text-lg py-2 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all underline underline-offset-4;
+    @apply bg-[#c6b06e] w-[180px] text-[#141420] font-bold text-lg py-2 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all ;
   }
   
   /* Divider line */
@@ -44,8 +44,58 @@
   .login-footer {
     @apply text-sm underline mt-4;
   }
+
+  .login-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+  }
 /* --------------------------
    End of login styles  
+--------------------------- */
+
+/* --------------------------
+   Create Account Styles (register-)
+--------------------------- */
+
+/* Page title: "Create Account" */
+.register-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+  }
+  
+.register-title {
+    @apply text-xl font-bold tracking-wide mb-6;
+  }
+  
+  /* Form labels: "Email", "Password", etc. */
+  .register-label {
+    @apply block text-sm mb-1 text-[#e9e4d3];
+  }
+  
+  /* Rounded input fields */
+  .register-input {
+    @apply w-full rounded-full px-4 py-2 bg-[#e9e4d3] text-black text-sm placeholder:text-gray-500;
+  }
+  
+  /* Toggle wrapper row (flex container) */
+  .register-toggle {
+    @apply w-full max-w-sm flex items-center gap-3;
+  }
+  
+  /* Toggle circle (checkbox visual) */
+  .register-toggle-circle {
+    @apply w-6 h-6 bg-[#c6b06e] rounded-full peer-checked:bg-[#3a3b4b] transition-colors duration-200;
+  }
+  
+  /* Text next to toggles */
+  .register-toggle-label {
+    @apply text-sm text-[#e9e4d3];
+  }
+  
+  /* Submit button */
+  .register-submit {
+    @apply  bg-[#c6b06e] text-[#141420] font-bold text-lg py-1.5 px-6 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all;
+    width: 250px;
+  }
+  
 
 /* Create-account intro*/
 body {
@@ -54,26 +104,295 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headline */
-.ca-title {
-  @apply text-xl font-bold leading-snug tracking-wide;
-}
-
-/* Paragraph block */
-.ca-description {
-  @apply text-lg leading-loose tracking-normal;
-  max-width: 300px;
-}
-
-/* Tagline */
-.ca-tagline {
-  @apply text-sm italic text-[#d4cebb] mt-2;
-}
-
-/* Button */
-.ca-btn-primary {
-  @apply underline underline-offset-4 bg-[#c6b06e] text-[#141420] font-bold text-lg py-2 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all;
-  width: 200px;
-}
-
+/* Container stays the same */
+.ca-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col items-center justify-start pt-20 px-12 pb-12 space-y-8;
+  }
+  
+  /* Headline */
+  .ca-title {
+    @apply text-2xl font-bold leading-snug tracking-wide text-center;
+  }
+  
+  /* Paragraph block */
+  .ca-description {
+    @apply text-base leading-relaxed tracking-normal text-center space-y-1 max-w-xs;
+  }
+  
+  /* Tagline */
+  .ca-tagline {
+    @apply text-sm italic text-[#d4cebb] mt-2 text-center;
+  }
+  
+  /* Button */
+  .ca-btn-primary {
+    @apply  bg-[#c6b06e] text-[#141420] font-bold text-lg py-2 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all;
+    width: 200px;
+  }
+  
 /* End of create account intro styles */
+
+/* --------------------------
+   Create Account Name (name-) styles
+--------------------------- */
+
+/* Header question text */
+.name-heading {
+    @apply text-xl font-bold text-center leading-snug max-w-xs mx-auto mb-6;
+  }
+  
+  /* Form labels */
+  .name-label {
+    @apply block text-sm mb-1 text-[#e9e4d3];
+  }
+  
+  /* Input field */
+  .name-input {
+    @apply w-full rounded-full px-4 py-2 bg-[#e9e4d3] text-black text-sm placeholder:text-gray-500;
+  }
+  
+  /* Next button */
+  .name-next-btn {
+    @apply text-[#c6b06e] text-lg font-bold  hover:text-[#e1d8b6] transition-all;
+  }
+  
+  .ca-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+  }
+  
+
+/* --------------------------
+   Create Account Age (age-) styles
+--------------------------- */
+
+.age-heading {
+    @apply text-xl font-bold text-center leading-snug mb-2;
+  }
+  
+  .age-subheading {
+    @apply text-sm italic text-center text-[#d4cebb] mb-6;
+  }
+  
+  .age-option-label {
+    @apply flex items-center gap-3 mb-3 text-base;
+  }
+  
+  .age-radio {
+    @apply w-5 h-5 rounded-full border border-[#e9e4d3] checked:bg-[#c6b06e] appearance-none cursor-pointer;
+  }
+  
+  .age-nav {
+    @apply w-full flex justify-between mt-10;
+  }
+  
+  .age-nav-btn {
+    @apply text-[#c6b06e] text-lg font-bold  hover:text-[#e1d8b6] transition-all flex items-center gap-1;
+  }
+
+
+/* --------------------------
+   Create Account Gender (gender-) styles
+--------------------------- */
+
+.gender-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+  }
+  
+  .gender-heading {
+    @apply text-xl font-bold text-center leading-snug mb-2;
+  }
+  
+  .gender-subheading {
+    @apply text-sm italic text-center text-[#d4cebb] mb-6;
+  }
+  
+  .gender-option-label {
+    @apply flex items-center gap-3 mb-3 text-base;
+  }
+  
+  .gender-radio {
+    @apply w-5 h-5 rounded-full border border-[#e9e4d3] checked:bg-[#c6b06e] appearance-none cursor-pointer;
+  }
+  
+  .gender-nav {
+    @apply w-full flex justify-between mt-10 px-1;
+  }
+  
+  .gender-nav-btn {
+    @apply text-[#c6b06e] text-lg font-bold  hover:text-[#e1d8b6] transition-all;
+  }
+  
+  /* --------------------------
+     End of gender styles
+  --------------------------- */
+
+
+/* --------------------------
+   Create Account Identity (identity-) styles
+--------------------------- */
+
+.identity-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+  }
+  
+  .identity-heading {
+    @apply text-xl font-bold text-center leading-snug mb-2;
+  }
+  
+  .identity-subheading {
+    @apply text-sm italic text-center text-[#d4cebb] mb-6;
+  }
+  
+  .identity-option-label {
+    @apply flex items-center gap-3 mb-3 text-base;
+  }
+  
+  .identity-radio {
+    @apply w-5 h-5 rounded-full border border-[#e9e4d3] checked:bg-[#c6b06e] appearance-none cursor-pointer;
+  }
+  
+  .identity-nav {
+    @apply w-full flex justify-between mt-10 px-1;
+  }
+  
+  .identity-nav-btn {
+    @apply text-[#c6b06e] text-lg font-bold hover:text-[#e1d8b6] transition-all;
+  }
+  
+  /* --------------------------
+   Create Account Experience (experience-) styles
+--------------------------- */
+
+.experience-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+  }
+  
+  .experience-heading {
+    @apply text-xl font-bold text-center leading-snug mb-2;
+  }
+  
+  .experience-subheading {
+    @apply text-sm italic text-center text-[#d4cebb] mb-6;
+  }
+  
+  .experience-option-label {
+    @apply flex items-center gap-3 mb-3 text-base;
+  }
+  
+  .experience-radio {
+    @apply w-5 h-5 rounded-full border border-[#e9e4d3] checked:bg-[#c6b06e] appearance-none cursor-pointer;
+  }
+  
+  .experience-nav {
+    @apply w-full flex justify-between mt-10 px-1;
+  }
+  
+  .experience-nav-btn {
+    @apply text-[#c6b06e] text-lg font-bold hover:text-[#e1d8b6] transition-all;
+  }
+  
+  /* --------------------------
+     End of experience styles
+  --------------------------- */
+
+  /* --------------------------
+   Create Account Strength (strength-) styles
+--------------------------- */
+
+.strength-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+  }
+  
+  .strength-heading {
+    @apply text-xl font-bold text-center leading-snug mb-2;
+  }
+  
+  .strength-subheading {
+    @apply text-sm italic text-center text-[#d4cebb] mb-6;
+  }
+  
+  .strength-option-label {
+    @apply flex items-start gap-3 mb-3 text-base;
+  }
+  
+  .strength-radio {
+    @apply mt-1 w-5 h-5 rounded-full border border-[#e9e4d3] checked:bg-[#c6b06e] appearance-none cursor-pointer;
+  }
+  
+  .strength-nav {
+    @apply w-full flex justify-between mt-10 px-1;
+  }
+  
+  .strength-nav-btn {
+    @apply text-[#c6b06e] text-lg font-bold hover:text-[#e1d8b6] transition-all;
+  }
+  
+  /* --------------------------
+     End of strength styles
+  --------------------------- */
+  
+  /* --------------------------
+   Create Account Challenge (challenge-) styles
+--------------------------- */
+
+.challenge-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+  }
+  
+  .challenge-heading {
+    @apply text-xl font-bold text-center leading-snug mb-2;
+  }
+  
+  .challenge-subheading {
+    @apply text-sm italic text-center text-[#d4cebb] mb-6;
+  }
+  
+  .challenge-option-label {
+    @apply flex items-start gap-3 mb-3 text-base;
+  }
+  
+  .challenge-radio {
+    @apply mt-1 w-5 h-5 rounded-full border border-[#e9e4d3] checked:bg-[#c6b06e] appearance-none cursor-pointer;
+  }
+  
+  .challenge-nav {
+    @apply w-full flex justify-between mt-10 px-1;
+  }
+  
+  .challenge-nav-btn {
+    @apply text-[#c6b06e] text-lg font-bold hover:text-[#e1d8b6] transition-all;
+  }
+  
+  /* --------------------------
+     End of challenge styles
+  --------------------------- */
+
+  /* --------------------------
+   Create Account Completion (complete-) styles
+--------------------------- */
+
+.complete-container {
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center items-center px-12 py-12 space-y-6 text-center;
+  }
+  
+  .complete-heading {
+    @apply text-xl font-bold leading-snug;
+  }
+  
+  .complete-subtext {
+    @apply text-sm leading-relaxed max-w-xs;
+  }
+  
+  .complete-start-btn {
+    @apply  bg-[#c6b06e] text-[#141420] font-bold text-lg py-2 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all;
+    width: 200px;
+  }
+  
+  .complete-skip-btn {
+    @apply mt-10 text-[#c6b06e] text-lg font-bold flex;
+  }
+  
+  
+  
+  
+  
