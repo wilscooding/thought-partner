@@ -47,9 +47,6 @@ def generate_prompt(user_input: UserSelection):
 
     ai_response = call_openrouter_api(prompt)
 
-    print("personality_prompt:", avatar)
-    print("capability_prompt:", capability_prompt)
-    print("expert_description:", expert_description)
 
 
     return {
@@ -80,3 +77,19 @@ def get_user_selection_options():
         "genders": genders,
         "personality_types": personality_types
     }
+
+
+# Create a mapping from slug to avatar
+slug_to_avatar = {
+    avatar["name"].lower().replace(" ", "-"): avatar for avatar in avatar_descriptions
+}
+
+@router.get("/tp-profiles")
+def get_all_thought_partners():
+    return list(slug_to_avatar.values())
+
+@router.get("/tp-profiles/{slug}")
+def get_thought_partner_by_slug(slug: str):
+    if slug not in slug_to_avatar:
+        raise HTTPException(status_code=404, detail="Thought Partner not found")
+    return slug_to_avatar[slug]

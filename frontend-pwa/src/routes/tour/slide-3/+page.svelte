@@ -7,7 +7,7 @@
   
   <div class="tour-container">
     <!-- Logo -->
-    <img src="/logo.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
+    <img src="" alt="Logo" class="w-10 h-10 self-end mb-8" />
   
     <!-- Heading -->
     <h2 class="tour-heading">Thoughtfully matched,<br />every time.</h2>

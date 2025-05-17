@@ -6,24 +6,25 @@
   
   <div class="login-container items-center">
     <!-- Logo -->
-    <img src="/logo.png" alt="Logo" class="w-12 h-12 mb-4" />
+    <img src="" alt="Logo" class="w-12 h-12 mb-4" />
   
     <!-- Username -->
     <div class="w-full">
-      <label class="login-label">Username:</label>
-      <input type="email" placeholder="Enter your email" class="login-input" />
+      <label for="username" class="login-label">Username:</label>
+      <input id="username" type="email" placeholder="Enter your email" class="login-input" />
     </div>
   
     <!-- Password -->
     <div class="w-full">
-      <label class="login-label">Password:</label>
+      <label for="password" class="login-label">Password:</label>
       <div class="relative">
         <input
+          id="password"
           type={showPassword ? 'text' : 'password'}
           placeholder="Enter your password"
           class="login-input pr-10"
         />
-        <span class="login-icon-button" on:click={() => (showPassword = !showPassword)}>👁️</span>
+        <button class="login-icon-button" on:click={() => (showPassword = !showPassword)}>👁️</button>
       </div>
       <div class="text-xs mt-1 text-right underline cursor-pointer">Forgot Password?</div>
     </div>

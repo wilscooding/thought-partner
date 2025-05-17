@@ -5,13 +5,13 @@
   
   <div class="tour-container">
     <!-- Logo -->
-    <img src="/logo.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
+    <img src="" alt="Logo" class="w-10 h-10 self-end mb-8" />
   
     <!-- Heading -->
     <h2 class="tour-heading">Ready when you are.</h2>
   
     <!-- Play Icon -->
-    <img src="/tour-play-icon.png" alt="Play Icon" class="tour-icon" />
+    <img src="" alt="Play Icon" class="tour-icon" />
   
     <!-- Description -->
     <p class="tour-description">

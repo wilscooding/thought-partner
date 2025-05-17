@@ -333,7 +333,7 @@ avatar_descriptions = [
         }
     },
     {
-        "name": "Elias Chen",
+        "name": "Elliott",
         "gender": "Man",
         "ethnicity": "East Asian",
         "personality_type": "The Humble Sage",
