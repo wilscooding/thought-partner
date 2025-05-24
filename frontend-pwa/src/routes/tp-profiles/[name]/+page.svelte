@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     import MenuWrapper from '$lib/components/MenuWrapper.svelte';
 	import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
   
     let tp = null;
     let error = null;
@@ -31,7 +32,8 @@
         <h2 class="tp-profile-name">{tp.name}</h2>
         <p class="tp-profile-bio">{tp.description}</p>
   
-        <button class="tp-profile-connect">Connect</button>
+        <button class="tp-profile-connect" on:click={() => goto(`/tp-profiles/${name}/first`)}>Connect</button>
+
   
         <div class="tp-profile-back">
           <a href="/tp-profiles" class="text-lg font-bold">&lt; Back</a>
