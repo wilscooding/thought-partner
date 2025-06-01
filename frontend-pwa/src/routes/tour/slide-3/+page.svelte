@@ -7,18 +7,24 @@
   
   <div class="tour-container">
     <!-- Logo -->
-    <img src="" alt="Logo" class="w-10 h-10 self-end mb-8" />
-  
-    <!-- Heading -->
-    <h2 class="tour-heading">Thoughtfully matched,<br />every time.</h2>
-  
-    <!-- Icon -->
-    <img src="/tour-match-icon.png" alt="Matching Icon" class="tour-icon" />
-  
-    <!-- Description -->
-    <p class="tour-description">
-      We’ll ask you a few quick questions about what you want to focus on — and the kind of energy you need. From there, we’ll match you with a Thought Partner who fits your goals and style. Like a curated conversation, made just for you.
-    </p>
+    <img src="/Logo Gold.png" alt="Logo" class="w-10 h-10 self-end" />
+
+    
+
+    <div class="tour-content mt-20">
+
+        <!-- Heading -->
+        <h2 class="tour-heading">Thoughtfully matched,<br />every time.</h2>
+      
+        <!-- Icon -->
+        <img src="/tour-match-icon.png" alt="Matching Icon" class="tour-icon" />
+      
+        <!-- Description -->
+        <p class="tour-description">
+          We’ll ask you a few quick questions about what you want to focus on — and the kind of energy you need. From there, we’ll match you with a Thought Partner who fits your goals and style. Like a curated conversation, made just for you.
+        </p>
+    </div>
+
   
     <!-- Navigation -->
     <div class="tour-nav">

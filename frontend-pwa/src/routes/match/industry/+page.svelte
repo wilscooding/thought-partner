@@ -1,6 +1,7 @@
 <script>
     import MenuWrapper from '$lib/components/MenuWrapper.svelte';
     import { goto } from '$app/navigation';
+    import { userSelection } from '$lib/stores/userSelection';
   
     let selectedIndustry = '';
   
@@ -18,11 +19,24 @@
       "Transportation & Logistics"
     ];
   
+    // const handleNext = () => {
+    //   if (selectedIndustry) {
+    //     userSelection.update(selection => ({ ...selection, industry: selectedIndustry }));
+    //     goto('/match/guidance');
+    //   }
+    // };
+
     const handleNext = () => {
-      if (selectedIndustry) {
-        goto('/match/guidance'); // Adjust path as needed
-      }
-    };
+  if (selectedIndustry) {
+    userSelection.update(selection => {
+      const updated = { ...selection, industry: selectedIndustry };
+      console.log('Updated userSelection (industry):', updated);
+      return updated;
+    });
+    goto('/match/guidance');
+  }
+};
+
   </script>
   
   <MenuWrapper>

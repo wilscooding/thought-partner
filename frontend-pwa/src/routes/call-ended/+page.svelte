@@ -10,7 +10,7 @@
     }
   </script>
   
-  <MenuWrapper>
+  <MenuWrapper gray>
     <div class="call-ended-container">
       <h2 class="call-ended-title">Call Ended</h2>
       <p class="call-ended-message">

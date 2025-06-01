@@ -1,6 +1,7 @@
 <script>
     import MenuWrapper from '$lib/components/MenuWrapper.svelte';
     import { goto } from '$app/navigation';
+    import { userSelection } from '$lib/stores/userSelection.js'; // Import your store
   
     let selectedGender = '';
   
@@ -11,9 +12,23 @@
       "No Preference"
     ];
   
+    // const handleNext = () => {
+    //   if (selectedGender) {
+    //     userSelection.update(selection => ({ ...selection, gender: selectedGender }));
+    //     goto('/match/result');
+    //   };
+    // };
     const handleNext = () => {
-      if (selectedGender) goto('/match/result');
-    };
+  if (selectedGender) {
+    userSelection.update(selection => {
+      const updated = { ...selection, gender: selectedGender };
+      console.log('Updated userSelection (gender):', updated);
+      return updated;
+    });
+    goto('/match/result');
+  }
+};
+
   
     const handleBack = () => {
       goto('/match/personality');

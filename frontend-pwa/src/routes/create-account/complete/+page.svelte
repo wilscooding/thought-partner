@@ -1,12 +1,12 @@
 <script>
     import { goto } from '$app/navigation';
-    const handleStartTour = () => goto('/tour/start');
+    const handleStartTour = () => goto('/tour');
     const handleSkip = () => goto('/'); // or dashboard route
   </script>
   
   <div class="complete-container">
     <!-- Logo -->
-    <img src="/logo.png" alt="Logo" class="w-14 h-14 mb-4" />
+    <img src="/Logo Gold.png" alt="Logo" class="w-20 h-20 mb-4" />
   
     <!-- Heading -->
     <h2 class="complete-heading">You're all set<br />— nicely done!</h2>

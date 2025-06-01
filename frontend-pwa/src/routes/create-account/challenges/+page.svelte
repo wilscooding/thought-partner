@@ -2,47 +2,53 @@
     import { goto } from '$app/navigation';
     let selectedChallenge = '';
   
-    const handleNext = () => goto('/create-account/complete'); // or wherever you route next
+    const handleNext = () => {
+      if (selectedChallenge) {
+        goto('/create-account/complete');
+      } else {
+        alert('Please select a challenge to continue.');
+      }
+    };
     const handleBack = () => history.back();
+    const challengeOptions = [
+      'Balancing everything at once',
+      'Building a team or finding support',
+      'Communicating or influencing',
+      'Creativity & innovation',
+      'Making confident decisions',
+      'Managing stress or burnout',
+      'Solving tough problems',
+      'Turning ideas into action',
+      'Vision & big-picture thinking'
+    ];
   </script>
   
-  <div class="challenge-container">
+  <div class="create-container">
     <!-- Logo -->
-    <img src="/logo.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
-  
+    <div class="logo-container"> 
+
+       <img src="/Logo Gold.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
+    </div>    
     <!-- Heading -->
-    <h2 class="challenge-heading">
-      What's a challenge you<br />face in your work or<br />business?
-    </h2>
-    <p class="challenge-subheading">
-      (We ask so we can better support you —<br />
-      no judgment, promise.)
-    </p>
+     <div class="content-container">
+
+       <h2 class="challenge-heading">
+         What's a challenge you<br />face in your work or<br />business?
+       </h2>
+       <p class="challenge-subheading">
+         (We ask so we can better support you —<br />
+         no judgment, promise.)
+       </p>
+     
+     </div>
   
-    <!-- Challenge Options -->
-    <div class="w-full">
-      {#each [
-        'Balancing everything at once',
-        'Building a team or finding support',
-        'Communicating or influencing',
-        'Creativity & innovation',
-        'Making confident decisions',
-        'Managing stress or burnout',
-        'Solving tough problems',
-        'Turning ideas into action',
-        'Vision & big-picture thinking'
-      ] as challenge}
-        <label class="challenge-option-label">
-          <input
-            type="radio"
-            class="challenge-radio"
-            bind:group={selectedChallenge}
-            value={challenge}
-          />
-          {challenge}
-        </label>
-      {/each}
-    </div>
+    <!-- Challenge Dropdown -->
+    <select bind:value={selectedChallenge} class="drop-select">
+      <option value="" disabled selected>Select your challenge</option>
+      {#each challengeOptions as option}
+        <option value={option}>{option}</option>
+      {/each} 
+    </select>
   
     <!-- Navigation Buttons -->
     <div class="challenge-nav">

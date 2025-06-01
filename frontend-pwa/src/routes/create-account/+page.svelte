@@ -11,10 +11,11 @@
   
   <div class="register-container">
     <!-- Title and logo -->
-    <div class="w-full flex flex-col items-center space-y-4">
-      <h1 class="register-title text-left w-full">Create Account</h1>
-      <img src="/logo.png" alt="Logo" class="w-14 h-14 self-end" />
+    <div class="register-header flex items-center justify-between w-full">
+        <h1 class="register-title">Create Account</h1>
+        <img src="/Logo Gold.png" alt="Logo" class="register-logo" />
     </div>
+      
   
     <!-- Email -->
     <div class="w-full">
@@ -33,29 +34,25 @@
       <label class="register-label">Confirm Password</label>
       <input type="password" placeholder="Re-enter password" class="register-input" />
     </div>
-  
-    <!-- Agree to terms -->
-    <div class="register-toggle">
-      <label class="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" class="sr-only peer" bind:checked={agreedToTerms} />
-        <div class="register-toggle-circle"></div>
-      </label>
+    
+      <!-- Agree to Terms -->
+    <div class="toggle-row">
+      <div class="toggle-switch" class:active={agreedToTerms} on:click={() => agreedToTerms = !agreedToTerms}></div>
       <span class="register-toggle-label">
         I agree to the <a href="/terms" class="underline">terms and conditions</a>
       </span>
     </div>
-  
-    <!-- Confirm age -->
-    <div class="register-toggle">
-      <label class="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" class="sr-only peer" bind:checked={isAdult} />
-        <div class="register-toggle-circle"></div>
-      </label>
+
+    <!-- Confirm Age -->
+    <div class="toggle-row">
+      <div class="toggle-switch" class:active={isAdult} on:click={() => isAdult = !isAdult}></div>
       <span class="register-toggle-label">
         I confirm that I am 18 years of age or older.
       </span>
     </div>
-  
+    
+ 
+ 
      <!-- Submit button -->
     <div class="w-full flex justify-center mt-4">
         <button class="register-submit" on:click={handleSubmit}>Submit</button>

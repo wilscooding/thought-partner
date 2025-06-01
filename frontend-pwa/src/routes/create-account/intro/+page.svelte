@@ -4,7 +4,7 @@
   </script>
   
   <div class="ca-container items-center text-center">
-    <img src="/logo.png" alt="Logo" class="w-16 h-16 mb-4" />
+    <img src="/Logo Gold.png" alt="Logo" class="w-16 h-16 mb-4" />
   
     <h1 class="ca-title">
       Your Thought<br />

@@ -47,7 +47,7 @@
   
   /* OAuth buttons */
   .login-oauth {
-    @apply bg-white text-black flex items-center justify-center gap-2 w-full max-w-sm rounded-full py-2 shadow;
+    @apply bg-[#e9e4d3] text-black flex items-center justify-center gap-2 w-full max-w-sm rounded-full py-2 shadow;
   }
   
   /* Footer link */
@@ -68,7 +68,7 @@
 
 /* Page title: "Create Account" */
 .register-container {
-    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-start items-center px-12 py-12 space-y-6;
   }
   
 .register-title {
@@ -104,6 +104,63 @@
   .register-submit {
     @apply  bg-[#c6b06e] text-[#141420] font-bold text-lg py-1.5 px-6 rounded-full border border-transparent hover:border-[#e9e4d3] transition-all;
     width: 250px;
+  }
+
+  .register-header {
+    @apply flex items-center justify-center gap-4 mb-8;
+  }
+  
+  .register-logo {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: contain;
+  }
+  
+  .register-title{
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  /* The base toggle (circle inside a track) */
+  .toggle-switch {
+    width: 2.5rem;
+    height: 1.25rem;
+    background-color: #333345;
+    border-radius: 9999px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* The circle inside */
+  .toggle-switch::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 1rem;
+    height: 1rem;
+    background-color: #c6b06e;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  /* When the toggle is active (clicked) */
+  .toggle-switch.active {
+    background-color: #333345;
+  }
+  
+  .toggle-switch.active::before {
+    transform: translateX(1.25rem);
+    background-color: #c6b06e;
   }
   
 
@@ -200,12 +257,16 @@ body {
   }
 
 
+  
+
+
 /* --------------------------
    Create Account Gender (gender-) styles
 --------------------------- */
 
-.gender-container {
-    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6;
+.create-container {
+  @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col items-center px-8 py-6 text-center;
+  position: relative;
   }
   
   .gender-heading {
@@ -231,6 +292,18 @@ body {
   .gender-nav-btn {
     @apply text-[#c6b06e] text-lg font-bold  hover:text-[#e1d8b6] transition-all;
   }
+  .logo-container {
+    @apply w-full flex justify-end items-start px-4 pt-4 gap-4;
+  }
+  
+  .logo-top-right {
+    @apply w-8 h-8;
+    object-fit: contain;
+  }
+  .content-container {
+  @apply mt-20; /* Tailwind spacing - adjust as needed (mt-10, mt-12 for more) */
+}
+
   
   /* --------------------------
      End of gender styles
@@ -406,7 +479,7 @@ body {
 /* --------------------------
    Tour Styles (tour-)
 --------------------------- */
-
+/* 
 .tour-container {
     @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6 items-center text-center;
   }
@@ -417,15 +490,15 @@ body {
   
   .tour-description {
     @apply text-base leading-relaxed max-w-xs text-[#e9e4d3];
-  }
+  } */
   
-  .tour-nav {
+  /* .tour-nav {
     @apply flex justify-between w-full max-w-sm mt-10;
-  }
-  
+  } */
+/*   
   .tour-nav-btn {
     @apply font-bold text-[#e9e4d3] text-base;
-  }
+  } */
   
 
   /* --------------------------
@@ -433,7 +506,7 @@ body {
 --------------------------- */
 
 .tour-container {
-    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-center px-12 py-12 space-y-6 text-center;
+    @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col justify-start pt-14 px-12 py-12 space-y-20 items-center text-center;
   }
   
   .tour-heading {
@@ -449,7 +522,7 @@ body {
   }
   
   .tour-nav {
-    @apply w-full max-w-sm mx-auto flex justify-between pt-8;
+    @apply flex justify-between w-full max-w-sm mt-10;
   }
   
   .tour-nav-btn {
@@ -476,6 +549,14 @@ body {
   .menu-icon {
     @apply w-10 h-10 flex justify-center items-center;
   }
+
+  .menu-icon-img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 9999px; /* optional, if you want round icons like avatars */
+  }
+  
   
   /* Side drawer */
   .side-menu {
@@ -483,7 +564,7 @@ body {
   }
   
   .side-link {
-    @apply underline font-bold text-sm ml-2;
+    @apply font-bold text-sm ml-2;
   }
   
   /* Buttons & text */
@@ -510,6 +591,12 @@ body {
   .side-link {
     @apply  font-bold text-sm ml-2;
   }
+
+  .button-aligned-text {
+  margin-left: 0.8rem; /* or adjust as needed */
+  max-width: 12rem;    /* optional: control the width */
+}
+
   
 /* contacts style */
 
@@ -718,7 +805,7 @@ body {
     min-height: 3rem;
   }
   
-  .avatar-wrapper {
+  /* .avatar-wrapper {
     position: relative;
     border-radius: 9999px;
     border: 3px solid #c6b06e;
@@ -729,7 +816,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  } */
   
   .avatar-image {
     width: 100%;
@@ -738,6 +825,7 @@ body {
     object-position: top;
     border-radius: 9999px;
   }
+  
   
   .dialing-logo {
     position: absolute;
@@ -1466,4 +1554,27 @@ body {
   .terms-box::-webkit-scrollbar-track {
     background: #141420;
   }
+
+  /* --------------------------
+   Google Onboarding (onboarding-) styles
+--------------------------- */
+
+.onboarding-container {
+  @apply min-h-screen bg-[#141420] text-[#e9e4d3] font-serif flex flex-col items-center justify-center px-12 py-12 space-y-6 text-center;
+}
+
+
+
+
+.onboarding-toggle {
+  @apply flex items-center justify-start w-full max-w-sm gap-6;
+}
+
+
+
+
+
+
+
+
   

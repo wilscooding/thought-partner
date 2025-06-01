@@ -19,15 +19,15 @@ def generate_prompt(user_input: UserSelection):
     expert_description = get_expert_description(user_input.industry, user_input.capability_area, user_input.gender)
     prompt_template = get_prompt_template()
 
-       # Print out values for debugging
-    print("DEBUG: Avatar:", avatar)
-    print("Available capability areas:", list(capability_descriptions.keys()))
-    print("Available industry+capability+gender:", [
-    (e["industry"], e["capability_area"], e["gender"]) for e in industry_experts
-])
+#        # Print out values for debugging
+#     print("DEBUG: Avatar:", avatar)
+#     print("Available capability areas:", list(capability_descriptions.keys()))
+#     print("Available industry+capability+gender:", [
+#     (e["industry"], e["capability_area"], e["gender"]) for e in industry_experts
+# ])
 
-    print("DEBUG: Capability Prompt:", capability_prompt)
-    print("DEBUG: Expert Description:", expert_description)
+#     print("DEBUG: Capability Prompt:", capability_prompt)
+#     print("DEBUG: Expert Description:", expert_description)
 
 
     if not all([avatar, capability_prompt, expert_description]):

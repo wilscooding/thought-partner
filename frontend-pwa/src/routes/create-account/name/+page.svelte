@@ -4,20 +4,29 @@
     let firstName = '';
     let lastName = '';
   
-    function handleNext() {
-      goto('/create-account/age');
+    function handleNext()  {
+      if (firstName && lastName) {
+        goto('/create-account/age');
+      } else {
+        alert('Please enter both your first and last name to continue.');
+      }
     }
   </script>
   
-  <div class="ca-container items-center">
+  <div class="create-container items-center">
     <!-- Logo -->
-    <img src="/logo-small.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
-  
+    <div class="logo-container"> 
+
+       <img src="/Logo Gold.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
+    </div>  
     <!-- Question -->
-    <h2 class="name-heading">
-      Let’s get personal –<br />
-      what should we call you?
-    </h2>
+     <div class="content-container">
+
+       <h2 class="name-heading">
+         Let’s get personal –<br />
+         what should we call you?
+       </h2>
+     </div>
   
     <!-- First Name -->
     <div class="w-full">

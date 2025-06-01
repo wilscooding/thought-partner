@@ -7,7 +7,7 @@
   
   <div class="tour-container">
     <!-- Logo -->
-    <img src="" alt="Logo" class="w-10 h-10 self-end mb-8" />
+    <img src="/Logo Gold.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
   
     <!-- Heading -->
     <h2 class="tour-heading">Pick up where you left<br />off — or shift direction.</h2>

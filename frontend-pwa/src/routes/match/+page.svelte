@@ -16,9 +16,7 @@
   
       <button class="tp-match-button" on:click={handleStart}>Find A Partner</button>
   
-      <a href="/contacts" class="tp-match-back">
-        <span class="tp-back-arrow">&lt;</span> Contacts
-      </a>
+     
     </div>
   </MenuWrapper>
   

@@ -6,7 +6,7 @@
   
   <div class="tour-container">
     <!-- Logo -->
-    <img src="/logo.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
+    <img src="/Logo Gold.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
   
     <!-- Title -->
     <h2 class="tour-title">Conversations,<br />Not Commands.</h2>

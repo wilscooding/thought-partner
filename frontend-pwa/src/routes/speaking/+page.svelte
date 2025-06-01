@@ -12,7 +12,10 @@
     <!-- Avatar & Logo -->
     <div class="avatar-wrapper">
       <img src={tp.image} alt={tp.name} class="avatar-img" />
+    </div>
+    <div>
       <img src="/logo.png" alt="Logo" class="avatar-logo" />
+      
     </div>
   
     <!-- End Call Button -->
