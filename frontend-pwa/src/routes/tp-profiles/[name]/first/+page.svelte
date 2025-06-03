@@ -1,13 +1,19 @@
 <script>
-    import MenuWrapper from '$lib/components/MenuWrapper.svelte';
-    import { page } from '$app/stores';
-    import { onMount } from 'svelte';
-    import { goto } from '$app/navigation';
+  import MenuWrapper from '$lib/components/MenuWrapper.svelte';
+  import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
+  import { auth, db } from '$lib/firebase';
+  import { matchedTP } from '$lib/stores/matchedTP.js';
+  import { serverTimestamp, doc, setDoc } from 'firebase/firestore';
+  import { get } from 'svelte/store';
+
+
   
     let name = '';
     let selectedIndustry = '';
     let selectedCapability = '';
-  
+
+    
     const industryOptions = [
       "Construction", "Education Services", "Entertainment", "Finance & Insurance",
       "Healthcare & Social Assistance", "Hospitality & Food Services", "Manufacturing",
@@ -22,14 +28,89 @@
   
     $: name = $page.params.name?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   
-    function connect() {
-      // Here’s where you’d route or submit values to backend
-      console.log(`Connecting with ${name} on ${selectedIndustry} & ${selectedCapability}`);
+    // const handleConnect = async () => {
+    //   const user = auth.currentUser;
+    //   if (!user){
+    //     console.error('User not authenticated');
+    //     return; 
+    //   }
+
+    //   try {
+    //     // reference to the user's thought partners collection
+    //     const tpRef = doc(db, 'users', user.uid, 'thoughtPartners', matchedTP.id || matchedTP.name.replace(/\s+/g, '-').toLowerCase());
+
+    //     // saves the matched thought partner
+    //     await setDoc(tpRef, {
+    //       name: matchedTP.name,
+    //       image: matchedTP.image,
+    //       bio: matchedTP.bio,
+    //       industry: selectedIndustry,
+    //       capability: selectedCapability,
+    //       connectedAt: new Date().toISOString(),
+    //       notes: [],
+         
+    //     });
+
+    //     console.log('Thought Partner connected successfully:');
+    //     goto(`/tp-profiles/${matchedTP.name}`);
+
+    //   } catch (error) {
+    //     console.error('Error connecting Thought Partner:', error);
+    //   }
+    // }
+
+  const handleConnect = async () => {
+    const user = auth.currentUser;
+    
+    if (!user) {
+      console.error('❌ User not authenticated');
+      return; 
     }
+
+    const tp = get(matchedTP);
+    console.log('🤝 Matched Thought Partner:', tp);
+
+    if (!tp || !tp.name) {
+      console.error('❌ No matched Thought Partner found:', tp);
+      return;
+    }
+
+    if (!selectedIndustry || !selectedCapability) {
+      alert('⚠️ Please select both industry and guidance before connecting.');
+      console.warn('⚠️ Missing selections:', { selectedIndustry, selectedCapability });
+      return;
+    }
+
+    try {
+      const partnerId = tp.id || tp.name.replace(/\s+/g, '-').toLowerCase();
+      console.log('📌 Connecting Thought Partner with ID:', partnerId);
+
+      const tpRef = doc(db, 'users', user.uid, 'thoughtPartners', partnerId);
+      console.log('📂 Firestore doc ref path:', tpRef.path);
+
+      const tpData = {
+        ...tp, // Spread the matched TP data
+        industry: selectedIndustry,
+        capability: selectedCapability,
+        connectedAt: serverTimestamp(), // Use Firestore server timestamp
+        notes: []
+      };
+
+      console.log('💾 Saving Thought Partner data:', tpData);
+
+      await setDoc(tpRef, tpData);
+
+      console.log('✅ Thought Partner connected successfully');
+      goto(`/tp-profiles`); // Use partnerId here!
+    } catch (error) {
+      console.error('❌ Error connecting Thought Partner:', error);
+    }
+};
+
+
   
-    function goBack() {
-      goto('/tp-profiles');
-    }
+
+  
   </script>
   
   <MenuWrapper>
@@ -49,7 +130,7 @@
       <div class="tp-connect-field">
         <label class="tp-label">What industry are you working in or thinking about today?</label>
         <select bind:value={selectedIndustry} class="tp-select">
-          <option value="" disabled selected>-- Select Industry --</option>
+          <option value="" disabled>-- Select Industry --</option>
           {#each industryOptions as industry}
             <option value={industry}>{industry}</option>
           {/each}
