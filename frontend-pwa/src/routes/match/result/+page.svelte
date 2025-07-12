@@ -55,7 +55,9 @@
   <MenuWrapper>
     <div class="match-result-container">
       {#if loading}
-        <p>Loading match...</p>
+        <div class="typing-loader"> 
+          <span class="typed-text">Finding your Thought Partner...</span>
+        </div>
       {:else if error}
         <p class="text-red-500">{error}</p>
       {:else if matchedTP}

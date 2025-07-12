@@ -535,58 +535,63 @@ user_profile_options = {
     ]
 }
 
-
 user_selection_options = {
     "industry": {
         "question": "What industry are you working in or thinking about today?",
         "options": [
-            "Construction",
-            "Education Services",
-            "Entertainment",
-            "Finance & Insurance",
-            "Healthcare & Social Assistance",
-            "Hospitality & Food Services",
-            "Manufacturing",
-            "Professional & Business Services",
-            "Real Estate",
-            "Retail & E-commerce",
-            "Transportation & Logistics"
+            {"label": "Construction", "value": "Construction"},
+            {"label": "Education Services", "value": "Education Services"},
+            {"label": "Entertainment", "value": "Entertainment"},
+            {"label": "Finance & Insurance", "value": "Finance & Insurance"},
+            {"label": "Healthcare & Social Assistance", "value": "Healthcare & Social Assistance"},
+            {"label": "Hospitality & Food Services", "value": "Hospitality & Food Services"},
+            {"label": "Manufacturing", "value": "Manufacturing"},
+            {"label": "Professional & Business Services", "value": "Professional & Business Services"},
+            {"label": "Real Estate", "value": "Real Estate"},
+            {"label": "Retail & E-commerce", "value": "Retail & E-commerce"},
+            {"label": "Transportation & Logistics", "value": "Transportation & Logistics"}
         ]
     },
     "capability_area": {
         "question": "What kind of guidance are you looking for today?",
         "options": [
-            "Customer Experience",
-            "Finance",
-            "Marketing & Sales",
-            "Operations",
-            "People & Culture",
-            "Product & Innovation",
-            "Risk & Compliance",
-            "Strategy & Vision",
-            "Sustainability & Social Impact",
-            "Technology & Data"
+            {"label": "Customer Experience – Journey mapping, feedback, and loyalty", "value": "Customer Experience"},
+            {"label": "Finance – Budgets, funding, pricing, and financial strategy", "value": "Finance"},
+            {"label": "Marketing & Sales – Reaching customers and driving growth", "value": "Marketing & Sales"},
+            {"label": "Operations – Day-to-day structure, efficiency, and systems", "value": "Operations"},
+            {"label": "People & Culture – Hiring, leadership, team dynamics", "value": "People & Culture"},
+            {"label": "Product & Innovation – Building and improving your offering", "value": "Product & Innovation"},
+            {"label": "Risk & Compliance – Legal, ethical, and operational safeguards", "value": "Risk & Compliance"},
+            {"label": "Strategy & Vision – Big picture thinking, long-term goals, and direction", "value": "Strategy & Vision"},
+            {"label": "Sustainability & Social Impact – Doing good while doing business", "value": "Sustainability & Social Impact"},
+            {"label": "Technology & Data – Tech tools, automation, and data insights", "value": "Technology & Data"}
         ]
     },
     "personality_type": {
         "question": "What type of personality would be most helpful for you to talk to today?",
         "options": [
-            "The Adaptive Chameleon",
-            "The Analytical Architect",
-            "The Bold Provocateur",
-            "The Curious Explorer",
-            "The Empathetic Listener",
-            "The Grounded Realist",
-            "The Humble Sage",
-            "The Quiet Catalyst",
-            "The Strategic Optimist"
+            {"label": "Someone flexible who can meet me wherever I’m at today", "value": "The Adaptive Chameleon"},
+            {"label": "Someone analytical who can help me think through complex ideas", "value": "The Analytical Architect"},
+            {"label": "Someone direct who’ll challenge my thinking (in a good way)", "value": "The Bold Provocateur"},
+            {"label": "Someone curious and energetic who helps me explore new possibilities", "value": "The Curious Explorer"},
+            {"label": "Someone supportive who really listens and gets where I’m coming from", "value": "The Empathetic Listener"},
+            {"label": "Someone practical who keeps things clear and grounded", "value": "The Grounded Realist"},
+            {"label": "Someone wise and calm who helps me reflect and grow", "value": "The Humble Sage"},
+            {"label": "Someone thoughtful who helps me see things differently, without pushing", "value": "The Quiet Catalyst"},
+            {"label": "Someone hopeful and future-focused who helps me see what’s possible", "value": "The Strategic Optimist"}
         ]
     },
     "gender": {
         "question": "Do you have a gender you’d feel most comfortable talking to?",
-        "options": ["Woman", "Man", "Non-Binary"]
+        "options": [
+            {"label": "Woman", "value": "Woman"},
+            {"label": "Man", "value": "Man"},
+            {"label": "Non-Binary", "value": "Non-Binary"},
+            {"label": "No Preference", "value": "No Preference"}
+        ]
     }
 }
+
 
 capability_descriptions = {
     "Customer Experience": "customer experience. You’re all about creating smooth journeys, listening closely through feedback loops, and building loyalty by making customers feel seen, heard, and valued",

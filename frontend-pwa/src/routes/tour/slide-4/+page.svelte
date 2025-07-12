@@ -13,7 +13,7 @@
     <h2 class="tour-heading">Pick up where you left<br />off — or shift direction.</h2>
   
     <!-- Icon -->
-    <img src="/tour-shift-icon.png" alt="Restart Icon" class="tour-icon" />
+    <img src="/shift-icon.png" alt="Restart Icon" class="tour-icon" />
   
     <!-- Description -->
     <p class="tour-description">

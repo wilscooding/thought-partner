@@ -13,7 +13,7 @@
     <h2 class="tour-heading">Something to take<br />with you.</h2>
   
     <!-- Icon -->
-    <img src="/tour-summary-icon.png" alt="Email Icon" class="tour-icon" />
+    <img src="/summary-icon.png" alt="Email Icon" class="tour-icon" />
   
     <!-- Description -->
     <p class="tour-description">

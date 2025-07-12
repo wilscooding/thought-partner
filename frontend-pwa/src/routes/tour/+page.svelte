@@ -9,10 +9,10 @@
     <img src="/Logo Gold.png" alt="Logo" class="w-10 h-10 self-end mb-8" />
   
     <!-- Title -->
-    <h2 class="tour-title">Conversations,<br />Not Commands.</h2>
+    <h2 class="tour-heading">Conversations,<br />Not Commands.</h2>
   
     <!-- Icon -->
-    <img src="/icons/chat-icon.png" alt="Chat" class="w-20 h-20 my-4" />
+    <img src="/chat-icon.png" alt="Chat" class="tour-icon" />
   
     <!-- Description -->
     <p class="tour-description">

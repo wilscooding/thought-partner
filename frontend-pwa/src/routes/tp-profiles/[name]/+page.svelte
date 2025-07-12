@@ -30,7 +30,7 @@
       <div class="tp-profile-container">
         <img src={`/${tp.name}.png`} alt={tp.name} class="tp-profile-avatar" />
         <h2 class="tp-profile-name">{tp.name}</h2>
-        <p class="tp-profile-bio">{tp.description}</p>
+        <p class="tp-profile-bio">{tp.avatar_blurb}</p>
   
         <button class="tp-profile-connect" on:click={() => goto(`/tp-profiles/${name}/first`)}>Connect</button>
 

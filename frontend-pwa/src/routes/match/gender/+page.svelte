@@ -12,22 +12,25 @@
       "No Preference"
     ];
   
-    // const handleNext = () => {
-    //   if (selectedGender) {
-    //     userSelection.update(selection => ({ ...selection, gender: selectedGender }));
-    //     goto('/match/result');
-    //   };
-    // };
-    const handleNext = () => {
-  if (selectedGender) {
+  
+  const handleNext = () => {
+    let genderToSave = selectedGender;
+
+    if (selectedGender === 'No Preference') {
+      const options = ["Woman", "Man", "Non-Binary"];
+      const randomIndex = Math.floor(Math.random() * options.length);
+      genderToSave = options[randomIndex];
+      console.log('🎲 No preference selected. Randomly assigned gender:', genderToSave);
+    }
+
     userSelection.update(selection => {
-      const updated = { ...selection, gender: selectedGender };
-      console.log('Updated userSelection (gender):', updated);
+      const updated = { ...selection, gender: genderToSave };
+      console.log('✅ Updated userSelection (gender):', updated);
       return updated;
     });
+
     goto('/match/result');
-  }
-};
+    };
 
   
     const handleBack = () => {

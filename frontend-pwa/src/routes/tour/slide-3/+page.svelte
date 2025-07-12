@@ -17,7 +17,7 @@
         <h2 class="tour-heading">Thoughtfully matched,<br />every time.</h2>
       
         <!-- Icon -->
-        <img src="/tour-match-icon.png" alt="Matching Icon" class="tour-icon" />
+        <img src="/match-icon.png" alt="Matching Icon" class="tour-icon" />
       
         <!-- Description -->
         <p class="tour-description">

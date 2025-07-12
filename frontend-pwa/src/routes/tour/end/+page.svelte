@@ -1,6 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
-    const handleStart = () => goto('/'); // adjust path for your match/start screen
+    const handleStart = () => goto('/match'); // adjust path for your match/start screen
   </script>
   
   <div class="tour-container">
@@ -11,7 +11,7 @@
     <h2 class="tour-heading">Ready when you are.</h2>
   
     <!-- Play Icon -->
-    <img src="" alt="Play Icon" class="tour-icon" />
+    <img src="/play-icon.png" alt="Play Icon" class="tour-icon" />
   
     <!-- Description -->
     <p class="tour-description">

@@ -66,17 +66,81 @@ def generate_prompt(user_input: UserSelection):
 
 @router.get("/options")
 def get_user_selection_options():
-    industries = sorted(set(expert["industry"] for expert in industry_experts))
-    capability_areas = sorted(capability_descriptions.keys())
-    genders = sorted(set(avatar["gender"] for avatar in avatar_descriptions))
-    personality_types = sorted(set(avatar["personality_type"] for avatar in avatar_descriptions))
+    # Industry dropdown: label/value are the same
+    industries = [
+        {"label": industry, "value": industry}
+        for industry in sorted(set(expert["industry"] for expert in industry_experts))
+    ]
+
+    # Capability Area dropdown: label uses extended description
+    capability_area_labels = {
+        "Customer Experience": "Customer Experience – Journey mapping, feedback, and loyalty",
+        "Finance": "Finance – Budgets, funding, pricing, and financial strategy",
+        "Marketing & Sales": "Marketing & Sales – Reaching customers and driving growth",
+        "Operations": "Operations – Day-to-day structure, efficiency, and systems",
+        "People & Culture": "People & Culture – Hiring, leadership, team dynamics",
+        "Product & Innovation": "Product & Innovation – Building and improving your offering",
+        "Risk & Compliance": "Risk & Compliance – Legal, ethical, and operational safeguards",
+        "Strategy & Vision": "Strategy & Vision – Big picture thinking, long-term goals, and direction",
+        "Sustainability & Social Impact": "Sustainability & Social Impact – Doing good while doing business",
+        "Technology & Data": "Technology & Data – Tech tools, automation, and data insights",
+    }
+
+    capability_areas = [
+        {"label": label, "value": key}
+        for key, label in capability_area_labels.items()
+    ]
+
+    # Personality Type dropdown
+    personality_labels = {
+        "The Adaptive Chameleon": "Someone flexible who can meet me wherever I’m at today",
+        "The Analytical Architect": "Someone analytical who can help me think through complex ideas",
+        "The Bold Provocateur": "Someone direct who’ll challenge my thinking (in a good way)",
+        "The Curious Explorer": "Someone curious and energetic who helps me explore new possibilities",
+        "The Empathetic Listener": "Someone supportive who really listens and gets where I’m coming from",
+        "The Grounded Realist": "Someone practical who keeps things clear and grounded",
+        "The Humble Sage": "Someone wise and calm who helps me reflect and grow",
+        "The Quiet Catalyst": "Someone thoughtful who helps me see things differently, without pushing",
+        "The Strategic Optimist": "Someone hopeful and future-focused who helps me see what’s possible"
+    }
+
+    personality_types = [
+        {"label": label, "value": key}
+        for key, label in personality_labels.items()
+    ]
+
+    # Gender dropdown
+    gender_labels = {
+        "Woman": "Woman",
+        "Man": "Man",
+        "Non-Binary": "Non-Binary",
+        "No Preference": "No Preference"
+    }
+
+    genders = [
+        {"label": label, "value": key}
+        for key, label in gender_labels.items()
+    ]
 
     return {
-        "industries": industries,
-        "capability_areas": capability_areas,
-        "genders": genders,
-        "personality_types": personality_types
+        "industry": {
+            "question": "What industry are you working in or thinking about today?",
+            "options": industries
+        },
+        "capability_area": {
+            "question": "What kind of guidance are you looking for today?",
+            "options": capability_areas
+        },
+        "personality_type": {
+            "question": "What type of personality would be most helpful for you to talk to today?",
+            "options": personality_types
+        },
+        "gender": {
+            "question": "Do you have a gender you’d feel most comfortable talking to?",
+            "options": genders
+        }
     }
+
 
 
 # Create a mapping from slug to avatar

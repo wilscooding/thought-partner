@@ -1,63 +1,47 @@
 <script>
-    import MenuWrapper from '$lib/components/MenuWrapper.svelte';
-    import { goto } from '$app/navigation';
-    import { userSelection } from '$lib/stores/userSelection';
+  import MenuWrapper from '$lib/components/MenuWrapper.svelte';
+  import { goto } from '$app/navigation';
+  import { userSelection } from '$lib/stores/userSelection';
+  import { onMount } from 'svelte';
   
-    let selectedIndustry = '';
-  
-    const industries = [
-      "Construction",
-      "Education Services",
-      "Entertainment",
-      "Finance & Insurance",
-      "Healthcare & Social Assistance",
-      "Hospitality & Food Services",
-      "Manufacturing",
-      "Professional & Business Services",
-      "Real Estate",
-      "Retail & E-commerce",
-      "Transportation & Logistics"
-    ];
-  
-    // const handleNext = () => {
-    //   if (selectedIndustry) {
-    //     userSelection.update(selection => ({ ...selection, industry: selectedIndustry }));
-    //     goto('/match/guidance');
-    //   }
-    // };
+  let selectedIndustry = '';
+  let options = [];
 
-    const handleNext = () => {
+
+onMount(async () => {
+  try {
+    const res = await fetch('http://localhost:8000/api/options');
+    const data = await res.json();
+    options = data.industry.options; // ✅ Make sure you're accessing `data.industry.options`
+  } catch (err) {
+    console.error('Failed to fetch industries:', err);
+  }
+});
+
+
+const handleNext = () => {
   if (selectedIndustry) {
-    userSelection.update(selection => {
-      const updated = { ...selection, industry: selectedIndustry };
-      console.log('Updated userSelection (industry):', updated);
-      return updated;
-    });
+    userSelection.update(s => ({ ...s, industry: selectedIndustry }));
     goto('/match/guidance');
   }
 };
 
-  </script>
+</script>
   
-  <MenuWrapper>
-    <div class="match-container">
-      <h2 class="match-heading">
-        What industry<br />
-        are you working in or thinking<br />
-        about today?
-      </h2>
-  
-      <select class="match-select" bind:value={selectedIndustry}>
-        <option value="" disabled selected>Select an industry</option>
-        {#each industries as industry}
-          <option value={industry}>{industry}</option>
-        {/each}
-      </select>
-  
-      <div class="match-nav">
-        <span></span>
-        <button class="match-nav-btn" on:click={handleNext}>Next&gt</button>
-      </div>
+<MenuWrapper>
+  <div class="match-container">
+    <h2 class="match-heading">What industry are you working in or thinking about today?</h2>
+
+    <select bind:value={selectedIndustry} class="match-select">
+      <option value="" disabled selected>Select an industry</option>
+      {#each options as industry}
+        <option value={industry.value}>{industry.label}</option>
+      {/each}
+    </select>
+
+    <div class="match-nav">
+      <button class="match-nav-btn" on:click={handleNext}>Next &gt;</button>
     </div>
-  </MenuWrapper>
+  </div>
+</MenuWrapper>
   

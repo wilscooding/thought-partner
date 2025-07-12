@@ -13,7 +13,7 @@
     <h2 class="tour-heading">Executive-level insight —<br />made accessible.</h2>
   
     <!-- Icon -->
-    <img src="/tour-accessible-icon.png" alt="Accessible Icon" class="tour-icon" />
+    <img src="/tour-icon.png" alt="Accessible Icon" class="tour-icon" />
   
     <!-- Description -->
     <p class="tour-description">

@@ -1,30 +1,23 @@
 <script>
-    import MenuWrapper from '$lib/components/MenuWrapper.svelte';
-    import { goto } from '$app/navigation';
-    import { userSelection } from '$lib/stores/userSelection.js'; // Import your store
+  import MenuWrapper from '$lib/components/MenuWrapper.svelte';
+  import { goto } from '$app/navigation';
+  import { userSelection } from '$lib/stores/userSelection.js'; // Import your store
   
-    let selectedGuidance = '';
+  let selectedGuidance = '';
   
-    const guidanceOptions = [
-      "Customer Experience",
-      "Finance",
-      "Marketing & Sales",
-      "Operations",
-      "People & Culture",
-      "Product & Innovation",
-      "Risk & Compliance",
-      "Strategy & Vision",
-      "Sustainability & Social Impact",
-      "Technology & Data"
+  const guidanceOptions = [
+    { label: "Customer Experience – Journey mapping, feedback, and loyalty", value: "Customer Experience" },
+    { label: "Finance – Budgets, funding, pricing, and financial strategy", value: "Finance" },
+    { label: "Marketing & Sales – Reaching customers and driving growth", value: "Marketing & Sales" },
+    { label: "Operations – Day-to-day structure, efficiency, and systems", value: "Operations" },
+    { label: "People & Culture – Hiring, leadership, team dynamics", value: "People & Culture" },
+    { label: "Product & Innovation – Building and improving your offering", value: "Product & Innovation" },
+    { label: "Risk & Compliance – Legal, ethical, and operational safeguards", value: "Risk & Compliance" },
+    { label: "Strategy & Vision – Big picture thinking, long-term goals, and direction", value: "Strategy & Vision" },
+    { label: "Sustainability & Social Impact – Doing good while doing business", value: "Sustainability & Social Impact" },
+    { label: "Technology & Data – Tech tools, automation, and data insights", value: "Technology & Data" }
+  ];
 
-    ];
-  
-    // const handleNext = () => {
-    //   if (selectedGuidance) {
-    //     userSelection.update(selection => ({ ...selection, capability_area: selectedGuidance }));
-    //     goto('/match/personality');
-    //   }
-    // };
     const handleNext = () => {
   if (selectedGuidance) {
     userSelection.update(selection => {
@@ -53,7 +46,7 @@
       <select class="match-select" bind:value={selectedGuidance}>
         <option value="" disabled selected>Select a focus area</option>
         {#each guidanceOptions as option}
-          <option value={option}>{option}</option>
+          <option value={option.value}>{option.label}</option>
         {/each}
       </select>
   
