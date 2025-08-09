@@ -1,11 +1,34 @@
 <script>
   import { goto } from '$app/navigation';
-  import { auth, provider } from '$lib/firebase'; // Your Firebase setup
-  import { signInWithPopup } from 'firebase/auth';
+  import { auth, provider, appleProvider } from '$lib/firebase'; // Your Firebase setup
+  import { signInWithPopup, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+  import { onMount } from 'svelte';
+  
 
   let showPassword = false;
+  let email = '';
+  let password = '';  
 
   const handleStart = () => goto('/create-account/intro');
+
+  onMount(() => {
+
+    if (!auth) {
+      console.error('Firebase auth is not initialized.');
+      return;
+    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log('👀 Auth state changed:', user);
+      if (user) {
+        goto('/home');
+      }
+    });
+    return () => {
+      unsubscribe();
+      console.log('🛑 Auth state change listener removed.');
+    };
+});
+
 
   // Google Auth Handler
   async function handleGoogleLogin() {
@@ -19,6 +42,37 @@
       console.error('Google Sign-In Error:', error);
     }
   }
+
+  // Apple Auth Handler
+  async function handleAppleLogin() { 
+    try {
+      if (!auth || !appleProvider) throw new Error('Auth or Apple provider unavailable');
+      const result = await signInWithPopup(auth, appleProvider);
+      const user = result.user;
+      console.log('Apple user:', user);
+      goto('/home');
+    } catch (error) {
+      console.error('Apple Sign-In Error:', error);
+    }
+    
+  }
+
+  // email/password login handler
+  async function handleLogin() {
+    try {
+      if (!auth) throw new Error('Auth unavailable');
+      if (!email || !password) {
+        console.warn('Email and password are required.');
+        return;
+      }
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      console.log('Email/password user:', user);
+      goto('/home');
+    } catch (err) {
+      console.error('Login error:', err);
+    }
+  }
+  
 </script>
   
   <div class="login-container items-center">
@@ -27,8 +81,8 @@
   
     <!-- Username -->
     <div class="w-full">
-      <label for="username" class="login-label">Username:</label>
-      <input id="username" type="email" placeholder="Enter your email" class="login-input" />
+      <label for="username" class="login-label">Email:</label>
+      <input id="username" type="email" placeholder="Enter your email" class="login-input" bind:value={email}/>
     </div>
   
     <!-- Password -->
@@ -40,14 +94,22 @@
           type={showPassword ? 'text' : 'password'}
           placeholder="Enter your password"
           class="login-input pr-10"
+          bind:value={password}
         />
-        <button class="login-icon-button" on:click={() => (showPassword = !showPassword)} aria-label="Toggle password visibility">
+        <button
+          class="login-icon-button"
+          on:click={() => (showPassword = !showPassword)}
+          aria-label="Toggle password visibility"
+          type="button"
+        >
           {#if showPassword}
+            <!-- Eye off -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#141420" viewBox="0 0 24 24" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M13.875 18.825A10.05 10.05 0 0112 19c-4.418 0-8.268-2.943-9.542-7a10.05 10.05 0 011.49-2.678M9.88 9.88a3 3 0 014.24 4.24M3 3l18 18" />
             </svg>
           {:else}
+            <!-- Eye on -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#141420" viewBox="0 0 24 24" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -56,13 +118,14 @@
             </svg>
           {/if}
         </button>
+
         
        </div>
       <div class="text-xs mt-1 text-right underline cursor-pointer">Forgot Password?</div>
     </div>
   
     <!-- Login button -->
-    <button class="login-btn">Log In</button>
+    <button class="login-btn" on:click={handleLogin} type="button">Log In</button>
   
     <!-- Divider -->
     <div class="flex items-center w-full text-sm text-[#c6b06e] space-x-4">
@@ -72,14 +135,14 @@
     </div>
   
     <!-- Google -->
-    <button class="login-oauth" on:click={handleGoogleLogin}>
+    <button class="login-oauth" on:click={handleGoogleLogin} type="button">
       <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google" />
       Continue with Google
     </button>
     
   
     <!-- Apple -->
-    <button class="login-oauth">
+    <button class="login-oauth" on:click={handleAppleLogin} type="button">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-black" viewBox="0 0 24 24">
         <path d="M16.7 13.7c-.1-1.3.5-2.3 1.6-3.1-.6-.9-1.5-1.3-2.6-1.3-1.2 0-2.2.7-2.7.7s-1.4-.6-2.3-.6c-1.7 0-3.3 1.4-3.3 4.2 0 1.3.3 2.8.9 4 .5 1 1.2 2.1 2.2 2.1.9 0 1.2-.6 2.2-.6 1 0 1.2.6 2.2.6 1 0 1.6-1 2.2-2 .5-.9.7-1.8.8-2.3zM13.7 6.5c.5-.6.8-1.3.7-2.1-.8.1-1.6.5-2.1 1.1-.5.5-.8 1.3-.7 2.1.8-.1 1.5-.5 2.1-1.1z"/>
       </svg>

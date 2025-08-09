@@ -1,12 +1,21 @@
 <script>
     import MenuWrapper from '$lib/components/MenuWrapper.svelte';
+    import { goto } from '$app/navigation';
+    import { page } from '$app/stores';
+
+    let tp = { name: '', image: '' };
+
+    $: queryParams = $page.url.searchParams;
+    $: tp.name = queryParams.get('name');
+    $: tp.image = queryParams.get('image') || `/${tp.name}.png`;
   
     function handleCallback() {
-      // Placeholder for callback logic
-    }
+  goto(`/dialing?name=${encodeURIComponent(tp.name)}&image=${encodeURIComponent(`/${tp.name}.png`)}`);
+}
+
   
     function handleNewPartner() {
-      // Placeholder for connecting to different partner
+      goto('/match');
     }
   </script>
   

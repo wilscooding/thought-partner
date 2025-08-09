@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { getApp, initializeApp, getApps } from "firebase/app";
 import { browser } from "$app/environment";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // Firebase config from .env
@@ -24,14 +24,25 @@ console.log("✅ Firebase app initialized:", app.name);
 
 let auth = null;
 let provider = null;
+let appleProvider = null;
 if (browser) {
   auth = getAuth(app);
   provider = new GoogleAuthProvider();
+  appleProvider = new OAuthProvider('apple.com');
 }
 
 // const auth = getAuth(app);
 // const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
+// Optional helper: safe provider getter to avoid SSR crashes
+export function getGoogleProvider() {
+  return browser ? new GoogleAuthProvider() : null;
+}
 
-export { app, auth, provider, db };
+export function getAppleProvider() {
+  return browser ? new OAuthProvider('apple.com') : null;
+}
+
+
+export { app, auth, provider, appleProvider, db };

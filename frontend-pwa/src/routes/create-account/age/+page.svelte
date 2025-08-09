@@ -31,7 +31,7 @@
   
     <!-- Age Dropdown -->
   <select bind:value={selectedAge} class="drop-select">
-    <option value="" disabled selected>Select your age range</option>
+    <option value="" disabled>Select your age range</option>
     {#each ageOptions as option}
       <option value={option}>{option}</option>
     {/each}

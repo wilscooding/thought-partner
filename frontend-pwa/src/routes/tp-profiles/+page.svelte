@@ -2,7 +2,7 @@
   import MenuWrapper from '$lib/components/MenuWrapper.svelte';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { matchedTP } from '$lib/stores/matchedTP.js'; // Import the store
+  import { matchedTP } from '$lib/stores/matchedTP'; // Import the store
 
    
   let thoughtPartners = [];

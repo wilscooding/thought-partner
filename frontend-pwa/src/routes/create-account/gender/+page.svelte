@@ -35,7 +35,7 @@
     </div>
     <!-- gender dropdown -->
     <select bind:value={selectedGender} class="drop-select">
-      <option value="" disabled selected>Select your gender</option>
+      <option value="" disabled>Select your gender</option>
       {#each genderOptions as option}
         <option value={option}>{option}</option>
       {/each} 

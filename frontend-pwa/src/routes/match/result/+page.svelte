@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import MenuWrapper from '$lib/components/MenuWrapper.svelte';
     import { goto } from '$app/navigation';
-    import { userSelection } from '$lib/stores/userSelection.js'; // Import your store
+    import { userSelection } from '$lib/stores/userSelection'; // Import your store
     import { get } from 'svelte/store'; // Import Svelte's get function to access store values
   
     let matchedTP = null;

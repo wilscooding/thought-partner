@@ -44,7 +44,7 @@
   
     <!-- Strength Drop Down -->
     <select bind:value={selectedStrength} class="drop-select">
-      <option value="" disabled selected>Select your strength</option>
+      <option value="" disabled>Select your strength</option>
       {#each strengthOptions as option}
         <option value={option}>{option}</option>
       {/each} 

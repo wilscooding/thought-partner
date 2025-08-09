@@ -3,6 +3,8 @@
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
 
+
+    
     let tp = null;
     let error = null;
     let industry = "";
@@ -61,7 +63,7 @@
 
             <label class="tp-label">What industry are you working in or thinking about today?</label>
             <select bind:value={industry} class="tp-select">
-                <option disabled selected value="">Select an industry</option>
+                <option disabled value="">Select an industry</option>
                 {#each userOptions.industry as option}
                     <option>{option}</option>
                 {/each}
@@ -69,7 +71,7 @@
 
             <label class="tp-label">What kind of guidance are you looking for today?</label>
             <select bind:value={guidance} class="tp-select">
-                <option disabled selected value="">Select guidance</option>
+                <option disabled value="">Select guidance</option>
                 {#each userOptions.guidance as option}
                     <option>{option}</option>
                 {/each}

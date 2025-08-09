@@ -44,7 +44,7 @@
   
     <!-- Challenge Dropdown -->
     <select bind:value={selectedChallenge} class="drop-select">
-      <option value="" disabled selected>Select your challenge</option>
+      <option value="" disabled>Select your challenge</option>
       {#each challengeOptions as option}
         <option value={option}>{option}</option>
       {/each} 

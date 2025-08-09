@@ -38,7 +38,7 @@
   
     <!-- Experience Dropdown -->
     <select bind:value={selectedExperience} class="drop-select">
-      <option value="" disabled selected>Select your years of experience</option>
+      <option value="" disabled>Select your years of experience</option>
       {#each experienceOptions as option}
         <option value={option}>{option}</option>
       {/each} 

@@ -1,7 +1,10 @@
 <script>
     export let logo = "/Logo Gold.png";
     export let dark = false; // Add the dark prop
-    export let gray = false; // Add the gray prop
+    export let gray = false; // Add the gray 
+    
+    import { getAuth, signOut } from "firebase/auth";
+    import { goto } from "$app/navigation";
   
     let menuOpen = false;
 
@@ -10,6 +13,17 @@
   
     const toggleMenu = () => {
       menuOpen = !menuOpen;
+    };
+
+    const handleLogout = async () => {
+      try {
+        await signOut(getAuth());
+        menuOpen = false; // Close the menu on logout
+        console.log("User signed out successfully");
+        goto('/login'); // Redirect to home or login page
+      } catch (error) {
+        console.error("Error signing out:", error);
+      }
     };
   </script>
   
@@ -52,6 +66,16 @@
             <li class="flex items-center gap-2">
               <img src="/Security Icon.png" alt="Security" class="menu-icon-img" />
               <a href="/user-profile/password"><span class="side-link">Security & Privacy</span></a>
+            </li>
+            <!-- logout button for accessibility -->
+            <li>
+              <button
+                type="button"
+                class="text-sm hover:underline cursor-pointer text-[#141420] bg-transparent border-none p-0"
+                on:click={handleLogout}
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>

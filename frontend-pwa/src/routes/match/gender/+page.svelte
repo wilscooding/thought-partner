@@ -1,7 +1,7 @@
 <script>
     import MenuWrapper from '$lib/components/MenuWrapper.svelte';
     import { goto } from '$app/navigation';
-    import { userSelection } from '$lib/stores/userSelection.js'; // Import your store
+    import { userSelection } from '$lib/stores/userSelection'; // Import your store
   
     let selectedGender = '';
   
@@ -46,7 +46,7 @@
       </h2>
   
       <select class="match-select" bind:value={selectedGender}>
-        <option value="" disabled selected>Select a preference</option>
+        <option value="" disabled>Select a preference</option>
         {#each genderOptions as gender}
           <option value={gender}>{gender}</option>
         {/each}

@@ -50,7 +50,7 @@
         What industry are you working in or thinking about today?
       </h2>
       <select bind:value={industry} class="industry-select">
-        <option value="" disabled selected>Select industry</option>
+        <option value="" disabled>Select industry</option>
         {#each industries as option}
           <option value={option}>{option}</option>
         {/each}
@@ -61,7 +61,7 @@
         What kind of guidance are you looking for today?
       </h2>
       <select bind:value={guidance} class="industry-select">
-        <option value="" disabled selected>Select guidance</option>
+        <option value="" disabled>Select guidance</option>
         {#each guidanceOptions as option}
           <option value={option}>{option}</option>
         {/each}

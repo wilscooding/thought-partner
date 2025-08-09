@@ -3,7 +3,7 @@
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import { auth, db } from '$lib/firebase';
-  import { matchedTP } from '$lib/stores/matchedTP.js';
+  import { matchedTP } from '$lib/stores/matchedTP';
   import { serverTimestamp, doc, setDoc } from 'firebase/firestore';
   import { get } from 'svelte/store';
 
@@ -28,36 +28,7 @@
   
     $: name = $page.params.name?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   
-    // const handleConnect = async () => {
-    //   const user = auth.currentUser;
-    //   if (!user){
-    //     console.error('User not authenticated');
-    //     return; 
-    //   }
-
-    //   try {
-    //     // reference to the user's thought partners collection
-    //     const tpRef = doc(db, 'users', user.uid, 'thoughtPartners', matchedTP.id || matchedTP.name.replace(/\s+/g, '-').toLowerCase());
-
-    //     // saves the matched thought partner
-    //     await setDoc(tpRef, {
-    //       name: matchedTP.name,
-    //       image: matchedTP.image,
-    //       bio: matchedTP.bio,
-    //       industry: selectedIndustry,
-    //       capability: selectedCapability,
-    //       connectedAt: new Date().toISOString(),
-    //       notes: [],
-         
-    //     });
-
-    //     console.log('Thought Partner connected successfully:');
-    //     goto(`/tp-profiles/${matchedTP.name}`);
-
-    //   } catch (error) {
-    //     console.error('Error connecting Thought Partner:', error);
-    //   }
-    // }
+  
 
   const handleConnect = async () => {
     const user = auth.currentUser;
@@ -105,13 +76,9 @@
     } catch (error) {
       console.error('❌ Error connecting Thought Partner:', error);
     }
-};
-
-
+  };
   
-
-  
-  </script>
+</script>
   
   <MenuWrapper>
     <div class="tp-connect-container">
@@ -140,7 +107,7 @@
       <div class="tp-connect-field">
         <label class="tp-label">What kind of guidance are you looking for today?</label>
         <select bind:value={selectedCapability} class="tp-select">
-          <option value="" disabled selected>-- Select Guidance --</option>
+          <option value="" disabled>-- Select Guidance --</option>
           {#each capabilityOptions as option}
             <option value={option}>{option}</option>
           {/each}

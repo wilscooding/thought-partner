@@ -1,11 +1,14 @@
-<script>
+<!-- <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { onAuthStateChanged } from 'firebase/auth';
   import { auth } from '$lib/firebase';
 
+  let Loading = true;
+
   onMount(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      Loading = false;
       setTimeout(() => {
         if (user) {
           goto('/home');
@@ -17,6 +20,22 @@
 
     return () => unsubscribe();
   });
+</script> -->
+
+<script lang="ts">
+    import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
+    import { onAuthStateChanged } from 'firebase/auth';
+    import { auth } from '$lib/firebase';
+
+    onMount(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setTimeout(() => {
+                goto(user ? '/home' : '/login');
+            }, 2500);
+        });
+        return () => unsubscribe();
+    });
 </script>
 
 

@@ -33,7 +33,7 @@ const handleNext = () => {
     <h2 class="match-heading">What industry are you working in or thinking about today?</h2>
 
     <select bind:value={selectedIndustry} class="match-select">
-      <option value="" disabled selected>Select an industry</option>
+      <option value="" disabled>Select an industry</option>
       {#each options as industry}
         <option value={industry.value}>{industry.label}</option>
       {/each}

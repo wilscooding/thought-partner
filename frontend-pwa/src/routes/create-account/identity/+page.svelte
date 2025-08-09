@@ -42,7 +42,7 @@
   
   <!-- identity Drop down -->
   <select bind:value={selectedIdentity} class="drop-select">
-    <option value="" disabled selected>Select your professional identity</option>
+    <option value="" disabled>Select your professional identity</option>
     {#each identityOptions as option}
       <option value={option}>{option}</option>
     {/each}   
