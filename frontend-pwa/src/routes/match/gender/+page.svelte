@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import MenuWrapper from '$lib/components/MenuWrapper.svelte';
     import { goto } from '$app/navigation';
     import { userSelection } from '$lib/stores/userSelection'; // Import your store
@@ -7,7 +7,6 @@
   
     let selectedGender = '';
     let genderOptions: string[] = [];
-
     onMount(async () => {
       try {
         const data = await fetchOptions();

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import MenuWrapper from '$lib/components/MenuWrapper.svelte';
   import { goto } from '$app/navigation';
   import { userSelection } from '$lib/stores/userSelection'; // Import your store
@@ -7,6 +7,7 @@
   
   let selectedPersonality = '';
   let personalityOptions: Array<{ label: string; value: string }> = [];
+
 
   onMount(async () => {
     try {

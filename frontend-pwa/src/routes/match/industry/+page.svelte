@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import MenuWrapper from '$lib/components/MenuWrapper.svelte';
   import { goto } from '$app/navigation';
   import { userSelection } from '$lib/stores/userSelection';
@@ -6,16 +6,16 @@
   import { fetchOptions } from '$lib/services/options';
   
   let selectedIndustry = '';
-  let options: Array<{ label: string; value: string }> = [];
+  let guidanceOptions: Array<{ label: string; value: string }> = [];
 
 
 onMount(async () => {
   try {
     const data = await fetchOptions();
-    options = data?.industry?.options ?? []; // safe access
+    guidanceOptions = data?.industry?.options ?? []; // safe access
   } catch (err) {
     console.error('Failed to fetch industries:', err);
-    options = []; // fallback so the page doesn't crash
+    guidanceOptions = []; // fallback so the page doesn't crash
   }
 });
 
@@ -33,7 +33,7 @@ const handleNext = () => {
 
     <select bind:value={selectedIndustry} class="match-select">
       <option value="" disabled>Select an industry</option>
-      {#each options as industry}
+      {#each guidanceOptions as industry}
         <option value={industry.value}>{industry.label}</option>
       {/each}
     </select>
