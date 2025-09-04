@@ -2,34 +2,32 @@
   import MenuWrapper from '$lib/components/MenuWrapper.svelte';
   import { goto } from '$app/navigation';
   import { userSelection } from '$lib/stores/userSelection'; // Import your store
+  import { onMount } from 'svelte';
+  import { fetchOptions } from '$lib/services/options';
   
   let selectedGuidance = '';
-  
-  const guidanceOptions = [
-    { label: "Customer Experience – Journey mapping, feedback, and loyalty", value: "Customer Experience" },
-    { label: "Finance – Budgets, funding, pricing, and financial strategy", value: "Finance" },
-    { label: "Marketing & Sales – Reaching customers and driving growth", value: "Marketing & Sales" },
-    { label: "Operations – Day-to-day structure, efficiency, and systems", value: "Operations" },
-    { label: "People & Culture – Hiring, leadership, team dynamics", value: "People & Culture" },
-    { label: "Product & Innovation – Building and improving your offering", value: "Product & Innovation" },
-    { label: "Risk & Compliance – Legal, ethical, and operational safeguards", value: "Risk & Compliance" },
-    { label: "Strategy & Vision – Big picture thinking, long-term goals, and direction", value: "Strategy & Vision" },
-    { label: "Sustainability & Social Impact – Doing good while doing business", value: "Sustainability & Social Impact" },
-    { label: "Technology & Data – Tech tools, automation, and data insights", value: "Technology & Data" }
-  ];
+  let guidanceOptions = Array<{label: String; value:string }> = [];
 
-    const handleNext = () => {
-  if (selectedGuidance) {
-    userSelection.update(selection => {
-      const updated = { ...selection, capability_area: selectedGuidance };
-      console.log('Updated userSelection (guidance):', updated);
-      return updated;
-    });
-    goto('/match/personality');
-  }
+  onMount(async () => {
+    try {
+      const data = await fetchOptions();
+      guidanceOptions = data?.guidance?.options ?? []; // safe access
+    } catch (err) {
+      console.error('Failed to fetch guidance options:', err);
+      guidanceOptions = []; // fallback so the page doesn't crash
+    }
+  });
+
+const handleNext = () => {
+  if (!selectedGuidance) return;
+  userSelection.update(s => {
+    const updated = { ...s, capability_area: selectedGuidance };
+    console.log('Updated userSelection (guidance):', updated);
+    return updated;
+  });
+  goto('/match/personality');
 };
 
-  
     const handleBack = () => {
       goto('/match/industry');
     };

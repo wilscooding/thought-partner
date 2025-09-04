@@ -3,29 +3,28 @@
   import { goto } from '$app/navigation';
   import { userSelection } from '$lib/stores/userSelection';
   import { onMount } from 'svelte';
+  import { fetchOptions } from '$lib/services/options';
   
   let selectedIndustry = '';
-  let options = [];
+  let options: Array<{ label: string; value: string }> = [];
 
 
 onMount(async () => {
   try {
-    const res = await fetch('http://localhost:8000/api/options');
-    const data = await res.json();
-    options = data.industry.options; // ✅ Make sure you're accessing `data.industry.options`
+    const data = await fetchOptions();
+    options = data?.industry?.options ?? []; // safe access
   } catch (err) {
     console.error('Failed to fetch industries:', err);
+    options = []; // fallback so the page doesn't crash
   }
 });
 
 
 const handleNext = () => {
-  if (selectedIndustry) {
-    userSelection.update(s => ({ ...s, industry: selectedIndustry }));
-    goto('/match/guidance');
-  }
+  if (!selectedIndustry) return;
+  userSelection.update(s => ({ ...s, industry: selectedIndustry }));
+  goto('/match/guidance');  
 };
-
 </script>
   
 <MenuWrapper>

@@ -2,16 +2,22 @@
     import MenuWrapper from '$lib/components/MenuWrapper.svelte';
     import { goto } from '$app/navigation';
     import { userSelection } from '$lib/stores/userSelection'; // Import your store
+    import { onMount } from 'svelte';
+    import { fetchOptions } from '$lib/services/options';
   
     let selectedGender = '';
-  
-    const genderOptions = [
-      "Woman",
-      "Man",
-      "Non-Binary",
-      "No Preference"
-    ];
-  
+    let genderOptions: string[] = [];
+
+    onMount(async () => {
+      try {
+        const data = await fetchOptions();
+        genderOptions = data?.gender?.options ?? []; // safe access
+      } catch (err) {
+        console.error('Failed to fetch gender options:', err);
+        genderOptions = ["Woman", "Man", "Non-Binary", "No Preference"]; // fallback so the page doesn't crash
+      }
+    });
+    
   
   const handleNext = () => {
     let genderToSave = selectedGender;
